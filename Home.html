@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Mantou</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <!-- Internal Style for Integration -->
+    <style>
+    /* Google Font */
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900&display=swap');
+
+    /* Base Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #ffffff;
+        color: #121212;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #151515;
+        color: white;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        color: #b2b2b2;
+        margin: 0;
+    }
+
+    /* Carousel Styling */
+    .overlay-container {
+        position: relative;
+        margin-top: 80px; /* Adjust for header */
+    }
+
+    #carouselExampleIndicators {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .carousel-inner {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .carousel-inner .carousel-item {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Overlay Text */
+    .carousel-overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 2.5em;
+        line-height: 1.5;
+        text-align: left;
+        z-index: 2;
+        font-weight: normal;
+    }
+
+    .carousel-overlay-text a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    .carousel-overlay-text a:hover {
+        color: gray;
+        transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+        background-color: #151515;
+        color: #777;
+        padding: 40px 20px;
+        font-size: 0.9em;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+    }
+
+    .footer-column h3 {
+        color: #b2b2b2;
+        font-size: 1em;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .footer-column a {
+        color: #1e90ff;
+        text-decoration: none;
+        display: block;
+        margin: 5px 0;
+    }
+
+    .footer-column a:hover {
+        text-decoration: underline;
+    }
+    .social-icons a {
+        color: #b2b2b2;
+        font-size: 1.5em;
+        text-decoration: none;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        color: #555;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Spacing between icons */
+    }
+
+    .footer-icons a i {
+        font-size: 2em; /* Scale up the icons */
+        color: #b2b2b2;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Matt Mantou</h1>
+        <div class="menu-container">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <nav class="menu">
+                <label for="menu-toggle" class="close-icon">&times;</label>
+                <ul>
+                    <li><a href="Advertisement.html">Advertisement</a></li>
+                    <li><a href="Films.html">Films</a></li>
+                    <li><a href="Consulting.html">Consulting</a></li>
+                    <li><a href="My-Background.html">My Background</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="mailto:mat.dipietro@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/mattdipi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://vimeo.com/matteodipietro" target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                    <a href="https://www.instagram.com/mattmantou/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Centered Carousel with Overlay Text -->
+    <div class="overlay-container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- Carousel Indicators -->
+            
+
+            <!-- Carousel Slides -->
+            <div class="carousel-inner">
+                <!-- Video Slide -->
+                <div class="carousel-item active">
+                    <video class="d-block w-100" autoplay muted id="videoSlide1">
+                        <source src="Video_Assets\Home_Page\camwork.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="carousel-item">
+                    <video class="d-block w-100" autoplay muted id="videoSlide2">
+                        <source src="Video_Assets/Home_Page/Slide breakdown_small.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <!-- Video Slide 3 (New) -->
+                <div class="carousel-item">
+                    <video class="d-block w-100" autoplay muted id="videoSlide3">
+                        <source src="Video_Assets/Home_Page/SummerSale23_Ident Social loop_ENG.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Image Slide 1 -->
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/256937/pexels-photo-256937.jpeg" class="d-block w-100" alt="Slide Image">
+                </div>
+
+                <!-- Image Slide 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/1064162/pexels-photo-1064162.jpeg" class="d-block w-100" alt="Another Slide Image">
+                </div>
+            </div>
+
+            <!-- Overlay Text with Links -->
+            <div class="carousel-overlay-text">
+                <p><a href="Advertisement.html">Advertisement</a></p>
+                <p><a href="Films.html">Films</a></p>
+                <p><a href="Consulting.html">Consulting</a></p>
+                <p><a href="My-Background.html">My Background</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-column">
+            <h3>Get in touch</h3>
+            <div class="footer-icons">
+                <a href="mailto:mat.dipietro@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mattdipi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://vimeo.com/matteodipietro" target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                <a href="https://www.instagram.com/mattmantou/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Matt Mantou. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <!-- jQuery and Bootstrap Scripts -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Custom Script for Carousel Functionality -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carousel = $('#carouselExampleIndicators'); // Select the carousel element
+            let autoSlideInterval; // Variable to store the interval ID
+    
+            // Disable Bootstrap's automatic interval entirely
+            carousel.carousel({
+                interval: false,
+                ride: false
+            });
+    
+            // Function to clear any existing interval
+            function clearAutoSlideInterval() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+    
+            // Function to start auto-slide interval for image slides only
+            function startAutoSlideInterval() {
+                clearAutoSlideInterval(); // Clear any existing interval
+                autoSlideInterval = setInterval(function() {
+                    carousel.carousel('next');
+                }, 5000); // Change slides every 5 seconds for non-video slides
+            }
+    
+            // Add an event listener to each video to move to the next slide when the video ends
+            const videoSlides = document.querySelectorAll('.carousel-item video');
+            videoSlides.forEach(video => {
+                video.addEventListener("ended", function() {
+                    carousel.carousel('next'); // Move to the next slide when the video ends
+                });
+            });
+    
+            // Event listener to handle carousel slide transitions
+            carousel.on('slid.bs.carousel', function() {
+                const activeSlideVideo = document.querySelector('.carousel-item.active video');
+                
+                // If the active slide contains a video, play it and stop any auto-slide interval
+                if (activeSlideVideo) {
+                    activeSlideVideo.play(); // Play the video on the active slide
+                    clearAutoSlideInterval(); // Stop automatic sliding while a video is playing
+                } else {
+                    // If the active slide is an image, start auto-slide every 5 seconds
+                    startAutoSlideInterval();
+                }
+            });
+    
+            // Start auto-slide for the initial non-video slide if it's active
+            const activeSlideVideo = document.querySelector('.carousel-item.active video');
+            if (!activeSlideVideo) {
+                startAutoSlideInterval(); // Start auto-slide if the first slide is an image
+            }
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+          $('#carouselExampleIndicators').on('slid.bs.carousel', function () {
+            var activeSlide = $('.carousel-item.active');
+            var video = activeSlide.find('video')[0];
+            if (video) {
+              video.play();
+            }
+          });
+        });
+      </script>
+ 
+</body>
+</html>

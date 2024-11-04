@@ -1,0 +1,212 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #222;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Navbar */
+  .navbar {
+    
+    top: 0;
+    width: 100%;
+    z-index: 9999; /* High z-index to keep it on top */
+    padding: 25px 0;
+    background: #121212;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 750;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+  
+  /* Hamburger Menu */
+  .menu-container {
+    
+    top: 20px;
+    right: 20px;
+    z-index: 10000; /* Ensure it's above all other elements */
+  }
+  
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #b2b2b2;
+    transition: 0.3s;
+  }
+  
+  #menu-toggle {
+    display: none;
+  }
+  
+  #menu-toggle:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  
+  #menu-toggle:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #menu-toggle:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+  
+  /* Navigation Menu */
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #151515;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    z-index: 20000; /* Lower z-index than the menu-container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+  }
+  
+  #menu-toggle:checked ~ .menu {
+    transform: translateX(0);
+  }
+  
+  /* Close Icon */
+  .close-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 36px;
+    color: #b2b2b2;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Navigation Links */
+  .menu ul {
+    list-style-type: none;
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  .menu ul li {
+    margin: 20px 0;
+  }
+  
+  .menu ul li a {
+    color: #b2b2b2;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .menu ul li a:hover {
+    color: #fff;
+  }
+  
+  /* Social Icons */
+  .social-icons {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-icons a {
+    color: #b2b2b2;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #fff;
+  }
+  /* Carousel Overlay Text */
+  .carousel-overlay-text {
+    position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 2.5em;
+  line-height: 1.5;
+  text-align: left;
+  z-index: 2;
+}
+
+/* Make the link an inline-block element to apply the scale effect */
+.carousel-overlay-text a {
+  color: white;
+  text-decoration: none;
+  display: inline-block; /* Allows transform effects to apply */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for scale and color */
+}
+
+.carousel-overlay-text a:hover {
+  color: gray; /* Optional: change color on hover */
+  transform: scale(1.1); /* Enlarge text on hover */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+#carouselExampleIndicators {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: -80px; /* Adjust this value to remove the white line */
+  padding-top: 0;
+}
+
+/* Fullscreen Carousel Content */
+.carousel-inner,
+.carousel-item img,
+.carousel-item video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Track color */
+  border-radius:   
+ 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Thumb color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb hover color */
+}
+

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Mantou - Films</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Tiny Slider-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Internal Style for Integration -->
+    <style>
+
+    /* Google Font */
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900&display=swap');
+    
+    
+
+
+    /* Base Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Remove white line/gap below footer */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        color: #121212;
+    }
+
+    /* Navbar */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #151515;
+        color: #b2b2b2;    
+        top: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        color: #b2b2b2;
+        margin: 0;
+    }
+
+    .menu-container {
+        display: flex;
+        align-items: center;
+    }
+
+    menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: #151515;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+        z-index: 2000; /* Ensure it's above the carousel arrows */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+    /* About Section */
+    .about {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+        text-align: left;
+        background-color: #f4f4f4;
+    }
+
+    .about .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .about .bio-content {
+        max-width: 600px;
+    }
+
+    .about h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .about p {
+        font-size: 1em;
+        line-height: 1.6;
+        color: #333;
+    }
+   
+    /* Footer */
+    footer {
+        background-color: #151515;
+        color: #777;
+        padding: 40px 20px;
+        font-size: 0.9em;
+        width: 100%;
+        text-align: left;
+        margin-top: 0; /* Pushes the footer to the bottom */
+        box-shadow: 0 -1px 0 #151515; /* Optional: small shadow to cover line */
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+    }
+
+    .footer-column h3 {
+        color: #b2b2b2;
+        font-size: 1em;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Move social icons slightly up */
+    .social-icons {
+        display: flex;
+        gap: 20px;
+        margin-top: -10px;
+    }
+
+    .social-icons a {
+        color: #b2b2b2;
+        font-size: 1.5em;
+        text-decoration: none;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        color: #555;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .footer-icons a i {
+        font-size: 2em;
+        color: #b2b2b2;
+    }
+
+    footer {
+        position: relative;
+        margin-top: -12 !important;
+    }
+   
+    /* Carousel */
+    .carousel-item img { width: 100%; height: auto; transition: 0.3s ease; }
+    .carousel-item .image-overlay { position: relative; cursor: pointer; }
+    .carousel-item .image-overlay:hover img { filter: brightness(0.5); }
+    .carousel-item .image-description {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        color: #fff; font-size: 1.2rem; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .carousel-item .image-overlay:hover .image-description { opacity: 1; }
+
+    /* Carousel Arrows */
+    .carousel-control-prev, .carousel-control-next {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 2rem;
+        z-index: 900;
+    }
+
+    .carousel-control-prev i, .carousel-control-next i {
+        font-size: 2.5rem; /* Dimensione delle frecce su desktop */
+    }
+
+    @media (max-width: 992px) {
+        .carousel-control-prev i, .carousel-control-next i {
+        font-size: 2rem; /* Dimensione delle frecce su mobile */
+        }
+    }
+
+    /* Overlay styling */
+    #overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8);
+        display: none; align-items: center; justify-content: center; z-index: 1050;
+    }
+
+    #videoContainer {
+        position: relative; width: 90%; max-width: 800px; background: #000;
+        border-radius: 5px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #videoPlayer {
+        width: 100%; height: auto; border-radius: 5px;
+    }
+
+    #closeButton {
+        position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.8); color: #333;
+        font-size: 24px; border: none; cursor: pointer; z-index: 1060; width: 40px; height: 40px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+
+    #closeButton:hover { background: rgba(255, 255, 255, 1); color: #000; }
+         
+    /* Carousel Arrows */
+    .carousel-control-prev, .carousel-control-next {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 2rem;
+        z-index: 900;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;           /* Removes any border */
+        outline: none;           /* Removes focus outline */
+        box-shadow: none;        /* Removes any box shadow */
+        text-decoration: none;   /* Ensures no underline */
+    }
+
+    .carousel-control-prev {
+        left: 10px;
+    }
+
+    .carousel-control-next {
+        right: 10px;
+    }
+
+    .carousel-control-prev i, .carousel-control-next i {
+        font-size: 1.8rem; /* Adjusted size for desktop */
+    }
+
+    @media (max-width: 992px) {
+        .carousel-control-prev i, .carousel-control-next i {
+            font-size: 2rem; /* Adjusted size for mobile */
+        }
+    }
+
+    /* Overlay Styling */
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1050;
+    }
+
+    /* Responsive Video Player */
+    #videoContainer {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background: #000;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #videoPlayer {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    #closeButton {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        color: #333;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+        z-index: 1060;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #closeButton:hover {
+        background: rgba(255, 255, 255, 1);
+        color: #000;
+    }
+
+    @media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: 43%;
+        transform: translateY(-50%);
+        font-size: 2.5rem; /* Slightly larger on mobile */
+        }
+    }
+
+    #carouselExample {
+        height: 350px;
+    }
+
+    #carousel-inner {
+        max-height: 500px; /* Adjust as necessary */
+        overflow: hidden; /* Ensures no content spills over */
+    }
+    .carousel-control-prev, .carousel-control-next {
+        width: 50px; /* Set fixed width */
+        height: 50px; /* Set fixed height */
+        font-size: 2rem; /* Set fixed font size for icons */
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact center */
+}
+    
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1 style="color: #b2b2b2;">
+            <a href="Home.html" style="color: inherit; text-decoration: none;">Matt Mantou</a>
+        </h1>
+        <div class="menu-container">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <nav class="menu">
+                <label for="menu-toggle" class="close-icon">&times;</label>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Advertisement.html">Advertisement</a></li>
+                    <li><a href="Films.html">Films</a></li>
+                    <li><a href="Consulting.html">Consulting</a></li>
+                    <li><a href="My-Background.html">My Background</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="mailto:mat.dipietro@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/mattdipi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://vimeo.com/matteodipietro" target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                    <a href="https://www.instagram.com/mattmantou/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        <img src="fot.jpg" alt="Matt Mantou Profile" class="profile-image">
+        <div class="bio-content">
+            <h2>Films</h2>
+            <p>As a Creative Producer, I elevate advertising through innovative FOOH ideation and campaign execution, blending CGI, augmented reality, and 3D design. Working with clients like Serif Europe Ltd and Sony Pictures Entertainment, I transform everyday spaces into unforgettable visual experiences. From concept to final cut, my goal is to deliver high-end content that captivates and inspires.</p>
+        </div>
+    </section>
+  
+    <!-- Carousel -->
+    <div id="carouselExample" class="carousel slide" data-interval="false">
+        <div class="carousel-inner" id="carousel-inner">
+            <!-- Carousel items dinamici -->
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <i class="fas fa-chevron-right"></i>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+
+    <!-- Video Overlay -->
+    <div id="overlay">
+        <button id="closeButton" onclick="closeVideo()"><i class="fas fa-times"></i></button>
+        <div id="videoContainer">
+            <video id="videoPlayer" controls>
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const images = [
+            { src: "https://via.placeholder.com/600x400?text=Image+1", desc: "Mini Description 1", video: "video1.mp4" },
+            { src: "https://via.placeholder.com/600x400?text=Image+2", desc: "Mini Description 2", video: "video2.mp4" },
+            { src: "https://via.placeholder.com/600x400?text=Image+3", desc: "Mini Description 3", video: "video3.mp4" },
+            { src: "https://via.placeholder.com/600x400?text=Image+4", desc: "Mini Description 4", video: "video4.mp4" },
+            { src: "https://via.placeholder.com/600x400?text=Image+5", desc: "Mini Description 4", video: "video4.mp4" },
+            { src: "https://via.placeholder.com/600x400?text=Image+6", desc: "Mini Description 4", video: "video4.mp4" }
+        ];
+
+        function showVideo(videoUrl) {
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('videoSource').src = videoUrl;
+            document.getElementById('videoPlayer').load();
+            document.getElementById('videoPlayer').play();
+        }
+
+        function closeVideo() {
+            document.getElementById('videoPlayer').pause();
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function generateCarouselItems() {
+            const carouselInner = document.getElementById("carousel-inner");
+            carouselInner.innerHTML = "";
+
+            const itemsPerSlide = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
+
+            for (let i = 0; i < images.length; i += itemsPerSlide) {
+                const carouselItem = document.createElement("div");
+                carouselItem.classList.add("carousel-item");
+                if (i === 0) carouselItem.classList.add("active");
+
+                const row = document.createElement("div");
+                row.classList.add("row");
+
+                for (let j = i; j < i + itemsPerSlide && j < images.length; j++) {
+                    const col = document.createElement("div");
+                    col.classList.add("col-12", "col-md-6", "col-lg-4");
+
+                    const overlayDiv = document.createElement("div");
+                    overlayDiv.classList.add("image-overlay");
+                    overlayDiv.onclick = () => showVideo(images[j].video);
+
+                    const img = document.createElement("img");
+                    img.src = images[j].src;
+                    img.classList.add("img-fluid");
+
+                    const descDiv = document.createElement("div");
+                    descDiv.classList.add("image-description");
+                    descDiv.innerText = images[j].desc;
+
+                    overlayDiv.appendChild(img);
+                    overlayDiv.appendChild(descDiv);
+                    col.appendChild(overlayDiv);
+                    row.appendChild(col);
+                }
+
+                carouselItem.appendChild(row);
+                carouselInner.appendChild(carouselItem);
+            }
+        }
+
+        // Initialize carousel items on page load and resize
+        generateCarouselItems();
+        window.addEventListener('resize', generateCarouselItems);
+    </script>
+    
+    <!-- Video Overlay -->
+    <div id="overlay" style="display: none;">
+        <button id="closeButton" onclick="closeVideo()"><i class="fas fa-times"></i></button>
+        <div id="videoContainer">
+            <video id="videoPlayer" width="640" height="360" controls>
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-column">
+            <h3>Get in touch</h3>
+            <div class="footer-icons">
+                <a href="mailto:mat.dipietro@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mattdipi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://vimeo.com/matteodipietro" target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                <a href="https://www.instagram.com/mattmantou/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Matt Mantou. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    
+
+</body>
+</html>
